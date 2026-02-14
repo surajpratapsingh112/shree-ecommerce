@@ -3,96 +3,158 @@ import Button from '../common/Button';
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100">
+      
+      {/* ============================================
+          ANIMATED BACKGROUND ELEMENTS (from old HTML)
+          ============================================ */}
+      
+      {/* Animated Gradient Waves */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="wave wave1 absolute top-0 left-0"></div>
+        <div className="wave wave2 absolute top-0 left-0"></div>
+        <div className="wave wave3 absolute top-0 left-0"></div>
       </div>
 
-      {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-32">
+      {/* Floating Particles (10 particles like old HTML) */}
+      <div className="particles-container absolute inset-0 pointer-events-none">
+        <div className="particle particle-1"></div>
+        <div className="particle particle-2"></div>
+        <div className="particle particle-3"></div>
+        <div className="particle particle-4"></div>
+        <div className="particle particle-5"></div>
+        <div className="particle particle-6"></div>
+        <div className="particle particle-7"></div>
+        <div className="particle particle-8"></div>
+        <div className="particle particle-9"></div>
+        <div className="particle particle-10"></div>
+      </div>
+
+      {/* 3D Floating Shapes (4 shapes like old HTML) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="shape-3d shape-3d-1"></div>
+        <div className="shape-3d shape-3d-2"></div>
+        <div className="shape-3d shape-3d-3"></div>
+        <div className="shape-3d shape-3d-4"></div>
+      </div>
+
+      {/* ============================================
+          MAIN CONTENT (PROPERLY CENTERED)
+          ============================================ */}
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-6 animate-fade-in">
-            <div className="inline-block bg-blue-500 bg-opacity-50 px-4 py-2 rounded-full text-sm font-medium">
-              ⭐ Trusted by 500+ Hotels & Businesses
+          
+          {/* ============================================
+              LEFT CONTENT
+              ============================================ */}
+          <div className="space-y-8 animate-slide-in-left">
+            
+            {/* Glass Badge */}
+            <div className="inline-block animate-bounce-in">
+              <span className="glass-badge inline-flex items-center gap-2 px-6 py-3 bg-white bg-opacity-80 backdrop-blur-lg border border-white border-opacity-30 rounded-full text-blue-600 font-bold text-sm shadow-lg">
+                <span className="text-xl">✨</span>
+                Trusted Since 2013
+              </span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              Premium Hospitality Supplies
-              <span className="block text-blue-200 mt-2">At Your Doorstep</span>
+            {/* Kinetic Typography Heading */}
+            <h1 className="text-5xl md:text-7xl font-black leading-tight">
+              <span className="gradient-text-1 block mb-2">Premium</span>
+              <span className="gradient-text-2 morphing-text block mb-2">Hospitality</span>
+              <span className="gradient-text-3 block">Supplies</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-blue-100 leading-relaxed">
-              From guest amenities to cleaning supplies and office stationery - 
-              We provide everything your business needs with unmatched quality and service.
+            {/* Description */}
+            <p className="text-xl text-gray-700 leading-relaxed animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+              Complete solution for hotels, hospitals & institutions. Guest amenities, cleaning chemicals, 
+              office supplies & printing services across <span className="font-bold bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">Uttar Pradesh & Uttarakhand</span>.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
               <Link to="/products">
-                <Button size="lg" className="w-full sm:w-auto bg-white text-blue-600 hover:bg-gray-100">
-                  🛍️ Browse Products
-                </Button>
+                <button className="glass-button primary-glow relative px-8 py-4 bg-white bg-opacity-90 backdrop-blur-lg border border-white border-opacity-30 rounded-xl font-bold text-blue-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                  <span className="relative z-10">View Products</span>
+                  <div className="button-glow absolute inset-0 bg-gradient-to-r from-blue-400 to-emerald-400 opacity-0 hover:opacity-20 transition-opacity rounded-xl"></div>
+                </button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-blue-600">
-                  📞 Contact Us
-                </Button>
+                <button className="glass-button secondary-glow relative px-8 py-4 bg-white bg-opacity-90 backdrop-blur-lg border border-white border-opacity-30 rounded-xl font-bold text-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                  <span className="relative z-10">Request Quote</span>
+                  <div className="button-glow absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 opacity-0 hover:opacity-20 transition-opacity rounded-xl"></div>
+                </button>
               </Link>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-blue-400">
-              <div>
-                <div className="text-3xl font-bold">500+</div>
-                <div className="text-blue-200 text-sm">Happy Clients</div>
+            {/* Animated Stats Cards (3 stats like old HTML) */}
+            <div className="grid grid-cols-3 gap-4 pt-8">
+              <div className="stat-card animate-scale-in relative p-6 bg-white bg-opacity-90 backdrop-blur-lg border border-white border-opacity-30 rounded-2xl text-center shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300" style={{animationDelay: '0.6s'}}>
+                <div className="stat-icon text-3xl mb-2">🏆</div>
+                <div className="stat-number text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">10+</div>
+                <div className="stat-label text-sm text-gray-600 font-semibold mt-1">Years</div>
+                <div className="stat-glow absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-400 opacity-0 hover:opacity-10 transition-opacity rounded-2xl"></div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">1000+</div>
-                <div className="text-blue-200 text-sm">Products</div>
+              
+              <div className="stat-card animate-scale-in relative p-6 bg-white bg-opacity-90 backdrop-blur-lg border border-white border-opacity-30 rounded-2xl text-center shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300" style={{animationDelay: '0.8s'}}>
+                <div className="stat-icon text-3xl mb-2">📦</div>
+                <div className="stat-number text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">500+</div>
+                <div className="stat-label text-sm text-gray-600 font-semibold mt-1">Products</div>
+                <div className="stat-glow absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-400 opacity-0 hover:opacity-10 transition-opacity rounded-2xl"></div>
               </div>
-              <div>
-                <div className="text-3xl font-bold">100%</div>
-                <div className="text-blue-200 text-sm">Satisfaction</div>
+              
+              <div className="stat-card animate-scale-in relative p-6 bg-white bg-opacity-90 backdrop-blur-lg border border-white border-opacity-30 rounded-2xl text-center shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300" style={{animationDelay: '1s'}}>
+                <div className="stat-icon text-3xl mb-2">🤝</div>
+                <div className="stat-number text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">50+</div>
+                <div className="stat-label text-sm text-gray-600 font-semibold mt-1">Clients</div>
+                <div className="stat-glow absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-400 opacity-0 hover:opacity-10 transition-opacity rounded-2xl"></div>
               </div>
             </div>
           </div>
 
-          {/* Right Content - Image/Illustration */}
-          <div className="relative hidden md:block animate-float">
-            <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl">
-              <div className="space-y-4">
-                {/* Product Categories Icons */}
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-white bg-opacity-20 rounded-2xl p-6 text-center hover:scale-110 transition-transform">
-                    <div className="text-5xl mb-2">🛎️</div>
-                    <div className="text-sm font-medium">Amenities</div>
-                  </div>
-                  <div className="bg-white bg-opacity-20 rounded-2xl p-6 text-center hover:scale-110 transition-transform">
-                    <div className="text-5xl mb-2">🧹</div>
-                    <div className="text-sm font-medium">Cleaning</div>
-                  </div>
-                  <div className="bg-white bg-opacity-20 rounded-2xl p-6 text-center hover:scale-110 transition-transform">
-                    <div className="text-5xl mb-2">📝</div>
-                    <div className="text-sm font-medium">Stationery</div>
-                  </div>
+          {/* ============================================
+              RIGHT CONTENT - 3D CARD GRID (like old HTML)
+              ============================================ */}
+          <div className="relative animate-slide-in-right">
+            <div className="hero-3d-container grid grid-cols-2 gap-6" style={{perspective: '1000px'}}>
+              
+              {/* Card 1 - Guest Amenities */}
+              <div className="hero-card card-1 relative bg-white bg-opacity-90 backdrop-blur-lg border border-white border-opacity-30 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105" style={{transformStyle: 'preserve-3d'}}>
+                <div className="card-glow absolute inset-0 bg-gradient-to-br from-blue-400 to-emerald-400 opacity-0 hover:opacity-10 transition-opacity rounded-2xl"></div>
+                <div className="card-content relative z-10">
+                  <div className="text-6xl mb-4 animate-float">🛎️</div>
+                  <div className="font-bold text-gray-900 text-lg mb-2">Guest Amenities</div>
+                  <div className="text-sm text-gray-600">Premium Quality</div>
                 </div>
-                
-                {/* Features */}
-                <div className="bg-white bg-opacity-20 rounded-2xl p-6 space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">✓</div>
-                    <span className="font-medium">Quality Guaranteed</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">✓</div>
-                    <span className="font-medium">Fast Delivery</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">✓</div>
-                    <span className="font-medium">Best Prices</span>
-                  </div>
+              </div>
+              
+              {/* Card 2 - Cleaning */}
+              <div className="hero-card card-2 relative bg-white bg-opacity-90 backdrop-blur-lg border border-white border-opacity-30 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105" style={{transformStyle: 'preserve-3d'}}>
+                <div className="card-glow absolute inset-0 bg-gradient-to-br from-emerald-400 to-blue-400 opacity-0 hover:opacity-10 transition-opacity rounded-2xl"></div>
+                <div className="card-content relative z-10">
+                  <div className="text-6xl mb-4 animate-float" style={{animationDelay: '0.2s'}}>🧹</div>
+                  <div className="font-bold text-gray-900 text-lg mb-2">Cleaning</div>
+                  <div className="text-sm text-gray-600">Professional Grade</div>
+                </div>
+              </div>
+              
+              {/* Card 3 - Office Supplies */}
+              <div className="hero-card card-3 relative bg-white bg-opacity-90 backdrop-blur-lg border border-white border-opacity-30 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105" style={{transformStyle: 'preserve-3d'}}>
+                <div className="card-glow absolute inset-0 bg-gradient-to-br from-orange-400 to-red-400 opacity-0 hover:opacity-10 transition-opacity rounded-2xl"></div>
+                <div className="card-content relative z-10">
+                  <div className="text-6xl mb-4 animate-float" style={{animationDelay: '0.4s'}}>📝</div>
+                  <div className="font-bold text-gray-900 text-lg mb-2">Office Supplies</div>
+                  <div className="text-sm text-gray-600">Complete Range</div>
+                </div>
+              </div>
+              
+              {/* Card 4 - Printing */}
+              <div className="hero-card card-4 relative bg-white bg-opacity-90 backdrop-blur-lg border border-white border-opacity-30 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105" style={{transformStyle: 'preserve-3d'}}>
+                <div className="card-glow absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-400 opacity-0 hover:opacity-10 transition-opacity rounded-2xl"></div>
+                <div className="card-content relative z-10">
+                  <div className="text-6xl mb-4 animate-float" style={{animationDelay: '0.6s'}}>🖨️</div>
+                  <div className="font-bold text-gray-900 text-lg mb-2">Printing</div>
+                  <div className="text-sm text-gray-600">Custom Solutions</div>
                 </div>
               </div>
             </div>
@@ -100,11 +162,13 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Wave Bottom */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="rgb(249, 250, 251)"/>
-        </svg>
+      {/* ============================================
+          SCROLL INDICATOR
+          ============================================ */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="scroll-indicator w-6 h-10 border-2 border-gray-400 rounded-full flex items-start justify-center p-2">
+          <div className="scroll-wheel w-1 h-3 bg-gray-400 rounded-full animate-pulse"></div>
+        </div>
       </div>
     </section>
   );

@@ -43,27 +43,40 @@ const Header = () => {
       {/* Main Header */}
       <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="text-3xl">🏢</div>
+          {/* Logo with Image */}
+          <Link to="/" className="flex items-center gap-3">
+            {/* Logo Image - You'll need to add this to public folder */}
+            <div className="w-12 h-12 flex items-center justify-center">
+              {/* Placeholder - Replace with actual logo */}
+              
+             
+              <img 
+                src="/logo.png" 
+                alt="SHREE ENTERPRISES Logo" 
+                className="w-full h-full object-contain"
+              />
+              
+            </div>
             <div>
-              <h1 className="text-2xl font-bold text-blue-600">{APP_NAME}</h1>
-              <p className="text-xs text-gray-600">Hospitality Supplies</p>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                {APP_NAME}
+              </h1>
+              <p className="text-xs text-gray-600 font-medium">We believe in Service</p>
             </div>
           </Link>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
               Home
             </Link>
-            <Link to="/products" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link to="/products" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
               Products
             </Link>
-            <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
               About
             </Link>
-            <Link to="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link to="/contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
               Contact
             </Link>
           </nav>
@@ -72,12 +85,12 @@ const Header = () => {
           <div className="flex items-center gap-4">
             <Link
               to="/cart"
-              className="relative flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              className="relative flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
             >
               <span className="text-xl">🛒</span>
-              <span className="hidden md:inline">Cart</span>
+              <span className="hidden md:inline font-semibold">Cart</span>
               {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 flex items-center justify-center rounded-full font-bold">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 flex items-center justify-center rounded-full font-bold shadow-lg animate-pulse">
                   {totalItems}
                 </span>
               )}
@@ -87,16 +100,16 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         <nav className="md:hidden mt-4 flex gap-4 text-sm">
-          <Link to="/" className="text-gray-700 hover:text-blue-600">
+          <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">
             Home
           </Link>
-          <Link to="/products" className="text-gray-700 hover:text-blue-600">
+          <Link to="/products" className="text-gray-700 hover:text-blue-600 font-medium">
             Products
           </Link>
-          <Link to="/about" className="text-gray-700 hover:text-blue-600">
+          <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium">
             About
           </Link>
-          <Link to="/contact" className="text-gray-700 hover:text-blue-600">
+          <Link to="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
             Contact
           </Link>
         </nav>
