@@ -151,6 +151,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
   animation: gradient-shift 3s ease infinite;
 }
 
@@ -159,6 +160,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
   animation: gradient-shift 3s ease infinite;
   animation-delay: 1s;
 }
@@ -168,6 +170,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
   animation: gradient-shift 3s ease infinite;
   animation-delay: 2s;
 }
@@ -283,8 +286,19 @@ body {
 }
 
 /* ============================================
-   FLOAT ANIMATION
+   BASIC ANIMATIONS
    ============================================ */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 @keyframes float {
   0%, 100% {
@@ -295,8 +309,27 @@ body {
   }
 }
 
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
 }
 
 /* ============================================
@@ -467,44 +500,6 @@ body {
     transform: translateY(12px);
     opacity: 0.3;
   }
-}
-
-/* ============================================
-   FADE IN ANIMATION
-   ============================================ */
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.8s ease-out;
-}
-
-/* ============================================
-   SLIDE IN ANIMATION
-   ============================================ */
-
-@keyframes slide-in {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.animate-slide-in {
-  animation: slide-in 0.3s ease-out;
 }
 
 /* ============================================
