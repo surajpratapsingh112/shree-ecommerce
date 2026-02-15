@@ -11,7 +11,7 @@ const Header = () => {
     <header className="bg-white shadow-md sticky top-0 z-40">
       {/* Top Bar */}
       <div className="bg-blue-600 text-white py-2">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-sm">
           <div className="flex items-center gap-4">
             <span>📞 +91 9876543210</span>
             <span>✉️ info@shreeenterprises.com</span>
@@ -41,7 +41,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo with Image */}
           <Link to="/" className="flex items-center gap-3">
