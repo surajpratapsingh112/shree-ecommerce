@@ -62,7 +62,7 @@ const HeroSection = () => {
               <span className="gradient-text-1 block mb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent animate-gradient-x">
                 Premium
               </span>
-              <span className="gradient-text-2 morphing-text block mb-2 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent animate-gradient-y">
+              <span className="gradient-text-2 morphing-text inline-block mb-2 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent animate-gradient-y">
                 Hospitality
               </span>
               <span className="gradient-text-3 block bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent animate-gradient-x">

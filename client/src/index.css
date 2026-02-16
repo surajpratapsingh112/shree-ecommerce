@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +16,10 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* ============================================
@@ -163,88 +171,19 @@ body {
   }
 }
 
-/* Entrance Animations */
-@keyframes slide-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* Morphing Text Effect - CRITICAL FOR HOSPITALITY ANIMATION */
+.morphing-text {
+  display: inline-block;
+  animation: morph-text 4s ease-in-out infinite;
 }
 
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes bounce-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
+@keyframes morph-text {
+  0%, 100% {
+    letter-spacing: 0em;
   }
   50% {
-    opacity: 1;
-    transform: scale(1.05);
+    letter-spacing: 0.05em;
   }
-  70% {
-    transform: scale(0.95);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.animate-slide-in-left {
-  animation: slide-in-left 0.8s ease-out;
-}
-
-.animate-slide-in-right {
-  animation: slide-in-right 0.8s ease-out;
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-scale-in {
-  animation: scale-in 0.8s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-bounce-in {
-  animation: bounce-in 0.8s ease-out;
 }
 
 /* Gradient Animations */
@@ -288,21 +227,6 @@ body {
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
-}
-
-/* Morphing Text Effect */
-.morphing-text {
-  display: inline-block;
-  animation: morph-text 4s ease-in-out infinite;
-}
-
-@keyframes morph-text {
-  0%, 100% {
-    letter-spacing: 0em;
-  }
-  50% {
-    letter-spacing: 0.05em;
-  }
 }
 
 /* Card Float Animations */
@@ -351,22 +275,43 @@ body {
   animation: bounce-slow 2s ease-in-out infinite;
 }
 
-/* Perspective for 3D cards */
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-/* Hardware Acceleration */
-.transform-gpu {
-  transform: translateZ(0);
-  will-change: transform;
-}
-
 /* ============================================
-   ORIGINAL ANIMATIONS (Keep these)
+   ENTRANCE ANIMATIONS
    ============================================ */
 
-/* Custom Animations */
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -378,56 +323,63 @@ body {
   }
 }
 
-@keyframes slide-in {
+@keyframes scale-in {
   from {
-    transform: translateX(100%);
     opacity: 0;
+    transform: scale(0.8);
   }
   to {
-    transform: translateX(0);
     opacity: 1;
+    transform: scale(1);
   }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
 }
 
 .animate-fade-in {
   animation: fade-in 0.8s ease-out;
 }
 
-.animate-slide-in {
-  animation: slide-in 0.3s ease-out;
+.animate-scale-in {
+  animation: scale-in 0.8s ease-out forwards;
+  opacity: 0;
 }
 
-.delay-1000 {
-  animation-delay: 1s;
+.animate-bounce-in {
+  animation: bounce-in 0.8s ease-out;
 }
 
-/* Background Blob Animation */
-@keyframes blob {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(20px, -50px) scale(1.1);
-  }
-  50% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  75% {
-    transform: translate(50px, 50px) scale(1.05);
-  }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
+/* ============================================
+   CATEGORIES SECTION ANIMATIONS
+   ============================================ */
 
 /* Category Card Wrapper Animation */
 .category-card-wrapper {
@@ -540,42 +492,205 @@ body {
   }
 }
 
-/* Perspective for 3D Effects */
-.perspective-1000 {
-  perspective: 1000px;
+/* ============================================
+   PRODUCTS SECTION ANIMATIONS
+   ============================================ */
+
+/* Product Card Wrapper Animation */
+.product-card-wrapper {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
 }
 
-/* Transform GPU for Better Performance */
-.transform-gpu {
-  transform: translateZ(0);
-  will-change: transform;
+/* Product Card Hover */
+.product-card {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Badge Animation */
+.product-card-wrapper:hover .product-card {
+  transform: translateY(-12px);
+}
+
+/* Product Image Zoom & Rotate */
+.product-image {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Discount Badge Pulse */
+.discount-badge {
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
 @keyframes badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.5);
+  }
+}
+
+/* Stock Badge Slide In */
+.stock-badge {
+  animation: slide-in-right-badge 0.5s ease-out;
+}
+
+@keyframes slide-in-right-badge {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Category Badge Hover */
+.category-badge {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .category-badge {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
+}
+
+/* Product Particles */
+.product-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.product-particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.6), transparent);
+  border-radius: 50%;
+  animation: particle-float 3s ease-in-out infinite;
+}
+
+.product-particle-1 {
+  width: 8px;
+  height: 8px;
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.product-particle-2 {
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  right: 25%;
+  animation-delay: 0.5s;
+}
+
+.product-particle-3 {
+  width: 6px;
+  height: 6px;
+  bottom: 30%;
+  left: 70%;
+  animation-delay: 1s;
+}
+
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.add-to-cart-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.add-to-cart-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Rating Stars Animation */
+.product-card:hover .text-yellow-400 {
+  animation: star-glow 0.5s ease-in-out;
+}
+
+@keyframes star-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    filter: drop-shadow(0 0 4px rgba(250, 204, 21, 0.8));
+  }
+}
+
+/* Price Animation */
+.product-card:hover .text-3xl {
+  animation: price-bounce 0.5s ease-in-out;
+}
+
+@keyframes price-bounce {
   0%, 100% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 }
 
-/* Fade In Up Animation (if not already present) */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Card Shadow Glow on Hover */
+.product-card-wrapper:hover .product-card {
+  box-shadow: 
+    0 20px 40px rgba(59, 130, 246, 0.15),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out;
+/* Smooth Transitions */
+.product-card * {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+
+/* Stagger Animation Delays - Products */
+.product-card-wrapper:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.product-card-wrapper:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.product-card-wrapper:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.product-card-wrapper:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+/* ============================================
+   WHY CHOOSE US SECTION ANIMATIONS
+   ============================================ */
 
 /* Animated Wave Background */
 .why-wave {
@@ -764,7 +879,313 @@ body {
   }
 }
 
-/* CTA Button Animations */
+/* Icon Rotation on Hover */
+.feature-card:hover .w-20 {
+  animation: icon-wobble 0.6s ease-in-out;
+}
+
+@keyframes icon-wobble {
+  0%, 100% {
+    transform: scale(1.1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(6deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(-6deg);
+  }
+}
+
+/* Shadow Glow on Card Hover */
+.feature-card-wrapper:hover .feature-card {
+  box-shadow: 
+    0 20px 40px rgba(59, 130, 246, 0.2),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
+}
+
+/* Stagger Animation Delays - Features */
+.feature-card-wrapper:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.feature-card-wrapper:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.feature-card-wrapper:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.feature-card-wrapper:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+/* ============================================
+   FOOTER SECTION ANIMATIONS
+   ============================================ */
+
+/* Animated Wave on Top */
+.footer-wave-path {
+  fill: white;
+  animation: footer-wave-animation 8s ease-in-out infinite;
+}
+
+@keyframes footer-wave-animation {
+  0%, 100% {
+    d: path("M0,60 C240,100 480,40 720,60 C960,80 1200,20 1440,60 L1440,0 L0,0 Z");
+  }
+  50% {
+    d: path("M0,60 C240,40 480,80 720,60 C960,40 1200,100 1440,60 L1440,0 L0,0 Z");
+  }
+}
+
+/* Background Glow Effects */
+.footer-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.footer-glow-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent);
+  top: 20%;
+  left: 10%;
+  animation: footer-glow-float 15s ease-in-out infinite;
+}
+
+.footer-glow-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent);
+  top: 50%;
+  right: 15%;
+  animation: footer-glow-float 18s ease-in-out infinite reverse;
+  animation-delay: 3s;
+}
+
+.footer-glow-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent);
+  bottom: 20%;
+  left: 50%;
+  animation: footer-glow-float 20s ease-in-out infinite;
+  animation-delay: 6s;
+}
+
+@keyframes footer-glow-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(50px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-30px, 40px) scale(0.9);
+  }
+}
+
+/* Footer Section Fade In */
+.footer-section {
+  animation: footer-fade-in 0.8s ease-out;
+}
+
+@keyframes footer-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for footer sections */
+.footer-section:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.footer-section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.footer-section:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.footer-section:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+/* Social Icon Hover Effects */
+.social-icon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.social-icon:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+/* Social Icons Group Hover */
+.flex.gap-3:hover .social-icon:not(:hover) {
+  opacity: 0.6;
+  transform: scale(0.95);
+}
+
+/* Footer Link Hover Effect */
+.footer-link {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #3b82f6, #a855f7);
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+.footer-link:hover {
+  transform: translateX(4px);
+}
+
+/* Link Arrow Slide */
+.footer-link span {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Newsletter Input Focus */
+input[type="email"]:focus {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+}
+
+input[type="email"]::placeholder {
+  transition: opacity 0.3s ease;
+}
+
+input[type="email"]:focus::placeholder {
+  opacity: 0.5;
+}
+
+/* Subscribe Button Ripple */
+button[type="submit"] {
+  position: relative;
+  overflow: hidden;
+}
+
+button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button[type="submit"]:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+button[type="submit"]:disabled {
+  cursor: not-allowed;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  animation: back-to-top-slide-in 0.5s ease-out, back-to-top-bounce 2s ease-in-out infinite 0.5s;
+}
+
+@keyframes back-to-top-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes back-to-top-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.back-to-top:hover {
+  animation-play-state: paused;
+}
+
+/* Section Header Underline */
+h4 span {
+  animation: section-underline-grow 0.8s ease-out;
+}
+
+@keyframes section-underline-grow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 3rem;
+  }
+}
+
+/* Separator Line Animation */
+.relative.h-px {
+  animation: separator-expand 1s ease-out;
+}
+
+@keyframes separator-expand {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* ============================================
+   CTA BUTTON ANIMATIONS (Shared)
+   ============================================ */
+
 .cta-button {
   position: relative;
   overflow: hidden;
@@ -788,7 +1209,6 @@ body {
   height: 300px;
 }
 
-/* CTA Button Shine Effect */
 .cta-button::after {
   content: '';
   position: absolute;
@@ -815,32 +1235,9 @@ body {
   }
 }
 
-/* Icon Rotation on Hover */
-.feature-card:hover .w-20 {
-  animation: icon-wobble 0.6s ease-in-out;
-}
-
-@keyframes icon-wobble {
-  0%, 100% {
-    transform: scale(1.1) rotate(0deg);
-  }
-  25% {
-    transform: scale(1.1) rotate(6deg);
-  }
-  75% {
-    transform: scale(1.1) rotate(-6deg);
-  }
-}
-
-/* Bottom Gradient Line */
-.feature-card .absolute.bottom-0 {
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Badge Animation */
-.inline-block.px-4.py-2 {
-  animation: badge-float 3s ease-in-out infinite;
-}
+/* ============================================
+   BADGE & COMMON ANIMATIONS
+   ============================================ */
 
 @keyframes badge-float {
   0%, 100% {
@@ -851,299 +1248,66 @@ body {
   }
 }
 
-/* Shadow Glow on Card Hover */
-.feature-card-wrapper:hover .feature-card {
-  box-shadow: 
-    0 20px 40px rgba(59, 130, 246, 0.2),
-    0 0 0 1px rgba(59, 130, 246, 0.1);
+.inline-block.px-4.py-2 {
+  animation: badge-float 3s ease-in-out infinite;
 }
 
-/* Stagger Animation Delays */
-.feature-card-wrapper:nth-child(1) {
-  animation-delay: 0s;
-}
+/* ============================================
+   GRADIENT TEXT ANIMATIONS
+   ============================================ */
 
-.feature-card-wrapper:nth-child(2) {
-  animation-delay: 0.15s;
-}
-
-.feature-card-wrapper:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.feature-card-wrapper:nth-child(4) {
-  animation-delay: 0.45s;
-}
-
-/* CTA Card Entry Animation */
-@keyframes cta-scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Perspective for 3D Effects */
-.transform-gpu {
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-  .why-shape,
-  .feature-sparkle {
-    display: none;
-  }
-
-  .feature-card-wrapper:hover .feature-card {
-    transform: translateY(-8px);
-  }
-
-  .why-wave {
-    filter: blur(60px);
-  }
-}
-
-/* Product Card Wrapper Animation */
-.product-card-wrapper {
-  animation: fade-in-up 0.8s ease-out forwards;
-  opacity: 0;
-}
-
-/* Product Card Hover */
-.product-card {
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.product-card-wrapper:hover .product-card {
-  transform: translateY(-12px);
-}
-
-/* Product Image Zoom & Rotate */
-.product-image {
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Discount Badge Pulse */
-.discount-badge {
-  animation: badge-pulse 2s ease-in-out infinite;
-}
-
-@keyframes badge-pulse {
+@keyframes gradient-shift {
   0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+    background-position: 0% 50%;
   }
   50% {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.5);
+    background-position: 100% 50%;
   }
 }
 
-/* Stock Badge Slide In */
-.stock-badge {
-  animation: slide-in-right-badge 0.5s ease-out;
+.bg-gradient-to-r {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
 }
 
-@keyframes slide-in-right-badge {
+/* ============================================
+   UTILITY ANIMATIONS
+   ============================================ */
+
+@keyframes slide-in {
   from {
+    transform: translateX(100%);
     opacity: 0;
-    transform: translateX(20px);
   }
   to {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
-/* Category Badge Hover */
-.category-badge {
-  transition: all 0.3s ease;
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
 }
 
-.product-card:hover .category-badge {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
-}
-
-/* Product Particles */
-.product-particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.product-particle {
-  position: absolute;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.6), transparent);
-  border-radius: 50%;
-  animation: particle-float 3s ease-in-out infinite;
-}
-
-.product-particle-1 {
-  width: 8px;
-  height: 8px;
-  top: 20%;
-  left: 20%;
-  animation-delay: 0s;
-}
-
-.product-particle-2 {
-  width: 10px;
-  height: 10px;
-  top: 50%;
-  right: 25%;
-  animation-delay: 0.5s;
-}
-
-.product-particle-3 {
-  width: 6px;
-  height: 6px;
-  bottom: 30%;
-  left: 70%;
-  animation-delay: 1s;
-}
-
-@keyframes particle-float {
+@keyframes blob {
   0%, 100% {
-    transform: translateY(0) scale(1);
-    opacity: 0.4;
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -50px) scale(1.1);
   }
   50% {
-    transform: translateY(-30px) scale(1.2);
-    opacity: 0.8;
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(50px, 50px) scale(1.05);
   }
 }
 
-/* Add to Cart Button */
-.add-to-cart-btn {
-  position: relative;
-  overflow: hidden;
+.animate-blob {
+  animation: blob 7s infinite;
 }
 
-.add-to-cart-btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.add-to-cart-btn:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-/* Rating Stars Animation */
-.product-card:hover .text-yellow-400 {
-  animation: star-glow 0.5s ease-in-out;
-}
-
-@keyframes star-glow {
-  0%, 100% {
-    filter: drop-shadow(0 0 0 transparent);
-  }
-  50% {
-    filter: drop-shadow(0 0 4px rgba(250, 204, 21, 0.8));
-  }
-}
-
-/* Price Animation */
-.product-card:hover .text-3xl {
-  animation: price-bounce 0.5s ease-in-out;
-}
-
-@keyframes price-bounce {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-/* Card Shadow Glow on Hover */
-.product-card-wrapper:hover .product-card {
-  box-shadow: 
-    0 20px 40px rgba(59, 130, 246, 0.15),
-    0 0 0 1px rgba(59, 130, 246, 0.1);
-}
-
-/* Smooth Transitions */
-.product-card * {
-  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Background Pattern Animation */
-@keyframes pattern-drift {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(60px, 60px);
-  }
-}
-
-/* View All Button Glow */
-.view-all-button {
-  position: relative;
-  overflow: hidden;
-}
-
-.view-all-button::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transform: rotate(45deg);
-  animation: shine 3s infinite;
-}
-
-@keyframes shine {
-  0% {
-    left: -50%;
-  }
-  100% {
-    left: 150%;
-  }
-}
-
-/* Stagger Animation Delays */
-.product-card-wrapper:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.product-card-wrapper:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.product-card-wrapper:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-.product-card-wrapper:nth-child(4) {
-  animation-delay: 0.3s;
-}
-
-/* Loading State for Add to Cart */
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -1157,13 +1321,75 @@ body {
   animation: spin 1s linear infinite;
 }
 
-/* Mobile Optimizations */
-@media (max-width: 640px) {
-  .product-particle {
+/* ============================================
+   PERSPECTIVE & PERFORMANCE
+   ============================================ */
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* ============================================
+   ANIMATION DELAYS
+   ============================================ */
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Hide heavy animations on mobile */
+  .why-shape,
+  .feature-sparkle,
+  .product-particle,
+  .footer-glow {
     display: none;
   }
-  
+
+  /* Reduce transform distances */
+  .feature-card-wrapper:hover .feature-card,
   .product-card-wrapper:hover .product-card {
     transform: translateY(-8px);
+  }
+
+  /* Simplify blur effects */
+  .why-wave {
+    filter: blur(60px);
+  }
+
+  /* Disable wave animation on mobile */
+  .footer-wave-path {
+    animation: none;
+  }
+
+  /* Smaller back to top button */
+  .back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .particle {
+    display: none;
   }
 }
